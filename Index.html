@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        /* Grid ka design jahan sab pictures dikhengi */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        /* Har picture ka dabba */
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05); /* Mouse upar laane se picture thodi badi hogi */
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        /* Modal (Popup Window) ka design jo shuru mein chupa hoga */
+        #myModal {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        /* Popup ke andar wali badi picture */
+        #popupImg {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 10px;
+        }
+        /* Band karne wala (Close) button */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Certificates & Projects</h1>
+
+    <!-- Yeh hamari gallery hai -->
+    <div class="gallery">
+        <!-- Card 1 -->
+        <div class="card" onclick="openPopup('https://images.unsplash.com/photo-1517694712202-14dd9538aa97')">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97" alt="Project 1">
+            <h3 style="text-align:center;">Project One</h3>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card" onclick="openPopup('https://images.unsplash.com/photo-1498050108023-c5249f4df085')">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Certificate 1">
+            <h3 style="text-align:center;">Certificate</h3>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="card" onclick="openPopup('https://images.unsplash.com/photo-1504384308090-c894fdcc538d')">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt="Project 2">
+            <h3 style="text-align:center;">Design Work</h3>
+        </div>
+    </div>
+
+    <!-- Yeh wo Popup Window hai jo shuru mein chupi hui hai -->
+    <div id="myModal">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <img id="popupImg" src="" alt="Popup Image">
+    </div>
+
+    <!-- JavaScript jo button dabane pe popup kholti aur band karti hai -->
+    <script>
+        function openPopup(imageSrc) {
+            document.getElementById("myModal").style.display = "flex"; // Popup dikhao
+            document.getElementById("popupImg").src = imageSrc; // Badi image set karo
+        }
+
+        function closePopup() {
+            document.getElementById("myModal").style.display = "none"; // Popup chupa do
+        }
+    </script>
+
+</body>
+</html>
